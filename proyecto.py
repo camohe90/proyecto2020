@@ -12,14 +12,17 @@ firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://haiko-bd.firebaseio.com/'
 })
 
-for i in range (0,100000,10000):
+for i in range (0,100001,10000):
 
     ref = db.reference("cuentas")
     ref.update({
                     'camilo': i
-            })               
+            }) 
+    print("Agregue ", i , "pesos ")              
     sleep(3)   
 
+cont = db.reference('cuentas/camilo').get()
+print("El saldo final de Camilo es ", cont)
 
 
 
